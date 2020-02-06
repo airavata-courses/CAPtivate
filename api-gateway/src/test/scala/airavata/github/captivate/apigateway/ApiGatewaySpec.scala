@@ -11,20 +11,20 @@ class ApiGatewaySpec extends org.specs2.mutable.Specification {
     "return 200" >> {
       uriReturns200()
     }
-    "return hello world" >> {
-      uriReturnsHelloWorld()
+    "return Greeting" >> {
+      uriReturnsGreeting()
     }
   }
 
-  private[this] val retHelloWorld: Response[IO] = {
-    val getHW = Request[IO](Method.GET, uri"/hello/world")
+  private[this] val retGreeting: Response[IO] = {
+    val getHW = Request[IO](Method.GET, uri"/usermanagement/Adithya")
     val userGreetings = UserManagement.impl[IO]
-    ApigatewayRoutes.userManagement(userGreetings).orNotFound(getHW).unsafeRunSync()
+    ApigatewayRoutes.userManagementRoute(userGreetings).orNotFound(getHW).unsafeRunSync()
   }
 
   private[this] def uriReturns200(): MatchResult[Status] =
-    retHelloWorld.status must beEqualTo(Status.Ok)
+    retGreeting.status must beEqualTo(Status.Ok)
 
-  private[this] def uriReturnsHelloWorld(): MatchResult[String] =
-    retHelloWorld.as[String].unsafeRunSync() must beEqualTo("{\"message\":\"Welcome to Captivate, Adithya\"}")
+  private[this] def uriReturnsGreeting(): MatchResult[String] =
+    retGreeting.as[String].unsafeRunSync() must beEqualTo("{\"greeting\":\"Welcome to Captivate, Adithya\"}")
 }
