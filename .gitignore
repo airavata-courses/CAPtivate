@@ -1,3 +1,5 @@
+target/
 .*
 !.travis.yml
 !.gitignore
+
