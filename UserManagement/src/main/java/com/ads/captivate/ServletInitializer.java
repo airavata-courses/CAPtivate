@@ -7,7 +7,7 @@ public class ServletInitializer extends SpringBootServletInitializer {
 
 	@Override
 	protected SpringApplicationBuilder configure(SpringApplicationBuilder application) {
-		return application.sources(WeatherdatapredictionApplication.class);
+		return application.sources(UserManagementApplication.class);
 	}
 
 }

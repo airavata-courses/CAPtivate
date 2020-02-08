@@ -9,8 +9,8 @@ import javax.annotation.PostConstruct;
 import java.util.TimeZone;
 
 @SpringBootApplication
-@EntityScan(basePackageClasses = { WeatherdatapredictionApplication.class, Jsr310JpaConverters.class })
-public class WeatherdatapredictionApplication {
+@EntityScan(basePackageClasses = { UserManagementApplication.class, Jsr310JpaConverters.class })
+public class UserManagementApplication {
 
 	@PostConstruct
 	void init() {
@@ -18,7 +18,7 @@ public class WeatherdatapredictionApplication {
 	}
 
 	public static void main(String[] args) {
-		SpringApplication.run(WeatherdatapredictionApplication.class, args);
+		SpringApplication.run(UserManagementApplication.class, args);
 	}
 
 }

@@ -9,12 +9,12 @@
 		<version>2.2.4.RELEASE</version>
 		<relativePath /> <!-- lookup parent from repository -->
 	</parent>
-	<groupId>com.iub.sice.sga.codestorm</groupId>
-	<artifactId>weatherdataprediction</artifactId>
+	<groupId>com.ads.captivate</groupId>
+	<artifactId>UserManagement</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<packaging>war</packaging>
-	<name>weatherdataprediction</name>
-	<description>weatherdataprediction project for Spring Boot</description>
+	<name>UserManagement</name>
+	<description>UserManagement project for Spring Boot</description>
 
 	<properties>
 		<java.version>1.8</java.version>

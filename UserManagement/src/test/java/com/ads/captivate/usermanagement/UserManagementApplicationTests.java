@@ -1,10 +1,10 @@
-package com.iub.sice.sga.codestorm.weatherdataprediction;
+package com.ads.captivate.usermanagement;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
-class WeatherdatapredictionApplicationTests {
+class UserManagementApplicationTests {
 
 	@Test
 	void contextLoads() {
