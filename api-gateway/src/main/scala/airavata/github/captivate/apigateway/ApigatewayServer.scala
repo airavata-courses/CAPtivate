@@ -20,6 +20,8 @@ object ApigatewayServer {
   properties.put("key.serializer","org.apache.kafka.common.serialization.StringSerializer")
   properties.put("value.serializer", "org.apache.kafka.common.serialization.StringSerializer")
   properties.put("acks","all")
+  
+  // TODO: Close the producer gracefully when the server exits
   val producer = new KafkaProducer[String, String](properties)
 
   val topic = "test"
