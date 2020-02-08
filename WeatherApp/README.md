@@ -5,10 +5,10 @@ Requirements:
 ------------
 1.Set up the repository and navigate to the folder WeatherApp
 
-2.Run the command npm install
+2.Run the command `npm install`
 
 This will install all the dependent packages for the ui to run.
 
-3.Now run the command npm start.
+3.Now run the command `npm start`.
 
-this will open the browser and your app will be running at http://localhost:3000/
+this will open the browser and your app will be running at `http://localhost:3000/`
