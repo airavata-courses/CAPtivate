@@ -6,7 +6,12 @@ Requirements:
 
 2. Python 3 : [https://www.python.org/downloads/]
 
-3. kafka-python pip install kafka-python and pymongo from pip install pymongo
+3. To install kafka-python & pymongo -
+
+```
+pip install kafka-python
+pip install pymongo
+```
 
 4. start Mongo container using
 
@@ -22,9 +27,12 @@ docker pull mongo:4.0.4
 
 
 Running:
-
+```
 python model_execution.py
-
+```
 #Producer is just for test purpose will be removed as service evolves.
-To test with producer run producer at python producer.py
+To test with producer run producer at 
+```
+python producer.py
+```
 
