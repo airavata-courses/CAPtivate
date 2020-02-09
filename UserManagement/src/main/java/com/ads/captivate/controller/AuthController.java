@@ -1,13 +1,21 @@
 package com.ads.captivate.controller;
 
+import java.net.URI;
+import java.util.Collections;
+
+import javax.validation.Valid;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.kafka.core.KafkaTemplate;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -25,10 +33,6 @@ import com.ads.captivate.payload.SignUpRequest;
 import com.ads.captivate.repository.RoleRepository;
 import com.ads.captivate.repository.UserRepository;
 import com.ads.captivate.security.JwtTokenProvider;
-
-import javax.validation.Valid;
-import java.net.URI;
-import java.util.Collections;
 
 @RestController
 @RequestMapping("/api/auth")
@@ -48,7 +52,20 @@ public class AuthController {
 
     @Autowired
     JwtTokenProvider tokenProvider;
+    
+    @Autowired
+    private KafkaTemplate<String, User> kafkaTemplate;
 
+    private static final String TOPIC = "Kafka_Example";
+    
+    @GetMapping("/kafka/{name}")
+    public String produceMessage(@PathVariable("name") final String name) {
+
+        kafkaTemplate.send(TOPIC, new User(name, name, "shubh@gmail.com", name));
+
+        return "Published successfully";
+    }
+    
     @PostMapping("/signin")
     public ResponseEntity<?> authenticateUser(@Valid @RequestBody LoginRequest loginRequest) {
 
