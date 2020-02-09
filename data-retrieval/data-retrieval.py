@@ -2,10 +2,11 @@ from kafka import KafkaConsumer
 import time
 import requests
 from pymongo import MongoClient
+import json
 
-mclient = MongoClient(port=27017)
+mclient = MongoClient(port=27014)
 
-db = mclient.foo
+db = mclient.foo2
 
 consumer = KafkaConsumer(
     'test',
@@ -22,6 +23,8 @@ while True:
         _,v = m.popitem()
         # v[0].value
         r = requests.get(url, params = params, headers = headers)
-        print(r.text)
-        # result = db.btable.insert_one(bar)
-    
+        bar = json.loads(r.text)
+        result = db.weather.insert_one(bar)
+        print("From DB")
+        r = db.weather.find_one({'_id': result.inserted_id })
+        print(r)

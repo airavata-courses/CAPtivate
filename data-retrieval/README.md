@@ -18,10 +18,8 @@ pip3 install requests
 
 4. start Mongo container using
 
-TODO: Fix port number (make this service use its dedicated container
-
 ```
-docker run -d -p 27017-27019:27017-27019 --name mongodb1 mongo:4.0.4
+docker run -d -p 27014-27016:27017-27019 --name mongodb2 mongo:4.0.4
 ```
 
 if you do not have mongo image already pull it from docker repo using
