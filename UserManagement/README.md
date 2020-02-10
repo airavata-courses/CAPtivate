@@ -13,11 +13,11 @@ After you've downloaded and installed the above in your system, follow these ste
 5. Download and extract the code to your local machine. Open the folder UserManagement which must contain the _pom.xml_. Open a command prompt in this location.
 6. Configure and set up the database as follows - 
 
-i. Create a datbase by the name of 'ads' in your mysql instance by running the following command MySQL.
+1. Create a datbase by the name of 'ads' in your mysql instance by running the following command MySQL.
 
 `create database ads;`
 
-ii. In the applications.properties file of the repository (in the _'..\CAPtivateUserManagement\src\main\resources'_ folder), change the value of the following variables as per the settings of your MySQL instance.
+2. In the applications.properties file of the repository (in the _'..\CAPtivateUserManagement\src\main\resources'_ folder), change the value of the following variables as per the settings of your MySQL instance.
 
 - spring.datasource.username=_<your_MySQL_root_username>_
 
