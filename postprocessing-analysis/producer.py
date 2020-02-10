@@ -7,5 +7,5 @@ producer = KafkaProducer(bootstrap_servers=['localhost:9092'],value_serializer=l
 #test code for initial setup
 for e in range(1000):
     data = {'number' : e}
-    producer.send('postprocessing_analysis', value=data)
+    producer.send('postprocessing-analysis', value=data)
     sleep(5)
