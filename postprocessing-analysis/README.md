@@ -11,7 +11,7 @@ Requirements:
 4. start Mongo container using
 
 ```
-docker run -d -p 27020-27022:27017-27019 --name mongodb1 mongo:4.0.4
+docker run -d -p 27020-27022:27017-27019 --name mongodb3 mongo:4.0.4
 ```
 
 if you do not have mongo image already pull it from docker repo using
