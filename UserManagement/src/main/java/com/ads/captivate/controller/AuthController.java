@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.kafka.core.KafkaTemplate;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
@@ -30,9 +31,12 @@ import com.ads.captivate.payload.ApiResponse;
 import com.ads.captivate.payload.JwtAuthenticationResponse;
 import com.ads.captivate.payload.LoginRequest;
 import com.ads.captivate.payload.SignUpRequest;
+import com.ads.captivate.payload.UserSummary;
 import com.ads.captivate.repository.RoleRepository;
 import com.ads.captivate.repository.UserRepository;
+import com.ads.captivate.security.CurrentUser;
 import com.ads.captivate.security.JwtTokenProvider;
+import com.ads.captivate.security.UserPrincipal;
 
 @RestController
 @RequestMapping("/api/auth")
@@ -54,16 +58,30 @@ public class AuthController {
     JwtTokenProvider tokenProvider;
     
     @Autowired
-    private KafkaTemplate<String, User> kafkaTemplate;
+    private KafkaTemplate<String, UserSummary> kafkaTemplate;
 
-    private static final String TOPIC = "Kafka_Example";
+    private static final String TOPIC = "user_mgmt";
     
-    @GetMapping("/kafka/{name}")
-    public String produceMessage(@PathVariable("name") final String name) {
-
-        kafkaTemplate.send(TOPIC, new User(name, name, "shubh@gmail.com", name));
-
-        return "Published successfully";
+	/*
+	 * @GetMapping("/kafka/{name}") public String
+	 * produceMessage(@PathVariable("name") final String name) {
+	 * 
+	 * kafkaTemplate.send(TOPIC, new User(name, name, "shubh@gmail.com", name));
+	 * 
+	 * return "Published successfully"; }
+	 */
+    
+    @GetMapping("/dataRetrieval/compose")
+    public void produceMessage(@CurrentUser UserPrincipal currentUser) {
+    	UserSummary userSummary = new UserSummary(currentUser.getId(), currentUser.getUsername(), currentUser.getName());
+        kafkaTemplate.send(TOPIC, userSummary);
+        return;
+    }
+    
+    @GetMapping("/user")
+    public UserSummary getCurrentUser(@CurrentUser UserPrincipal currentUser) {
+        UserSummary userSummary = new UserSummary(currentUser.getId(), currentUser.getUsername(), currentUser.getName());
+        return userSummary;
     }
     
     @PostMapping("/signin")
