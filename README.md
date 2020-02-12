@@ -15,18 +15,33 @@ Feel free to create issues and report bugs if you find something wrong in the pr
 
 ---
 
+#### Project Setup Instructions
+
 Download or pull the repository in to your local machine. The following steps detail the steps needed to set up and run the project. 
+
+```sh
+git clone https://github.com/airavata-courses/CAPtivate.git
+```
 
 ### Kafka and Zookeper Server Setup
 
-Start Kafka and Zookeper servers by running the command
+Start Kafka and Zookeper servers by running the command root of repository
 
 ```
+cd kafka
 docker-compose up -d
 ```
 
-This should create a kafka broker listening on `localhost:9092`
+This should create a kafka broker listening on `localhost:9092` with the following topics
 
+```
+usermanagement
+sessionmanagement
+session-update
+data-retrieval
+model-execution
+postprocessing-analysis
+```
 
 ### API Gateway Service
 
@@ -121,7 +136,7 @@ mvn spring-boot:run
 2. Start MongoDB container using
 
 ```
-docker run -d -p 27023-27025:27017-27019 --name mongodb3 mongo:4.0.4
+docker run -d -p 27023-27025:27017-27019 --name sessionmanagementDB mongo:4.0.4
 ```
 
 3. Run the command
@@ -142,12 +157,11 @@ npm start
 http://localhost:3005/
 ```
 
-
 ### Data retrieval service
 
 #### Software Requirements/Dependencies
 
-1. A Running kafka broker at `localhost:9092` with topic `test`.
+1. A Running kafka broker at `localhost:9092` with topic `data-retrieval`.
 
 2. `Python 3` - [https://www.python.org/downloads/] (https://www.python.org/downloads/).
 
@@ -163,19 +177,19 @@ pip3 install requests
 
 	* DB instance for data retrieval service
 	```
-	docker run -d -p 27014-27016:27017-27019 --name mongodb2 mongo:4.0.4
+	docker run -d -p 27014-27016:27017-27019 --name dataretrievaldb mongo:4.0.4
 	```
 	
 	* DB instance for model execution service
 
 	```
-	docker run -d -p 27017-27019:27017-27019 --name mongodb1 mongo:4.0.4
+	docker run -d -p 27017-27019:27017-27019 --name modelexecutiondb mongo:4.0.4
 	```
 	
 	* DB instance for post-processing and analysis service
 
 	```
-	docker run -d -p 27020-27022:27017-27019 --name mongodb4 mongo:4.0.4
+	docker run -d -p 27020-27022:27017-27019 --name ppadb mongo:4.0.4
 	```
 
 _if you do not have mongo image already pull it from docker repo using_
@@ -185,21 +199,24 @@ docker pull mongo:4.0.4
 ```
 
 
-5. Run the scripts as follows
+5. Run the scripts as follows from root of repository
+
+#### Linux/Mac
 
 ```sh
+cd data-retrieval
 python3 data-retrieval.py
 ```
 
 ```sh
+cd model-execution
 python3 model-execution.py
 ```
 
 ```sh
-python postprocessing-analysis.py
+cd postprocessing-analysis
+python3 postprocessing-analysis.py
 ```
-
-__Note__: Producer is just for test purpose will be removed as service evolves. To test with producer run producer at python producer.py
 
 
 ### User Interface
