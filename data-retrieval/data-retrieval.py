@@ -38,6 +38,8 @@ while True:
         print(tmax)
         mongosend = copy.deepcopy(tmax)
         result = db.weather.insert_one(mongosend)
+        # introduce mock processing time
+        time.sleep(30)
         # print("From DB")
         # r = db.weather.find_one({'_id': result.inserted_id })
         # print(tmax)
