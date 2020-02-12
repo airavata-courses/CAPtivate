@@ -29,12 +29,19 @@ while True:
     if bool(m):
         _,v = m.popitem()
         params['locationid']= v[0].value['locationid']
-        params['startdate'] = v[0].value['startdate']
-        params['enddate'] = v[0].value['startdate']
+        params['startdate'] = v[0].value['date']
+        params['enddate'] = v[0].value['date']
         
         r = requests.get(url, params = params, headers = headers)
         bar = json.loads(r.text)
-        tmax = {"id": "someid", "date": params['startdate'], "tmax": bar['results'][0]['value']}
+        tmax = {
+            "user-id": v[0].value['user-id'],
+            "job-id": v[0].value['job-id'],
+            "location-id": v[0].value['location-id'],
+            "date": params['date'],
+            # Number of fields will improve
+            "tmax": bar['results'][0]['value']
+        }
         print(tmax)
         mongosend = copy.deepcopy(tmax)
         result = db.weather.insert_one(mongosend)

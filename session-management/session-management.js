@@ -27,7 +27,8 @@ consumer.on("message", function(message) {
         db.collection("sessions").insertOne(m)
     }
     else {
-        db.collection("sessions").updateOne({"id": m.id}, {$set : m})
+        let m = eval('(' + message.value + ')')
+        db.collection("sessions").updateOne({"user-id": m.user-id, "job-id": m.job-id}, {$set : m})
     }
 });
  
