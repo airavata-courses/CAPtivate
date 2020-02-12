@@ -28,17 +28,17 @@ while True:
     params = {'datasetid': 'GHCND', 'units': 'metric', 'datatypeid': 'TMAX', 'includemetadata' : False}
     if bool(m):
         _,v = m.popitem()
-        params['locationid']= v[0].value['locationid']
+        params['locationid']= v[0].value['location_id']
         params['startdate'] = v[0].value['date']
         params['enddate'] = v[0].value['date']
         
         r = requests.get(url, params = params, headers = headers)
         bar = json.loads(r.text)
         tmax = {
-            "user-id": v[0].value['user-id'],
-            "job-id": v[0].value['job-id'],
-            "location-id": v[0].value['location-id'],
-            "date": params['date'],
+            "user_id": v[0].value['user_id'],
+            "job_id": v[0].value['job_id'],
+            "location_id": v[0].value['location_id'],
+            "date": v[0].value['date'],
             # Number of fields will improve
             "tmax": bar['results'][0]['value']
         }

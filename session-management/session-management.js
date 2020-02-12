@@ -28,13 +28,14 @@ consumer.on("message", function(message) {
     }
     else {
         let m = eval('(' + message.value + ')')
-        db.collection("sessions").updateOne({"user-id": m.user-id, "job-id": m.job-id}, {$set : m})
+        db.collection("sessions").updateOne({"user_id": m.user_id, "job_id": m.job_id}, {$set : m})
     }
 });
  
 app.get('/getbyid', function (req, res) {
-    id = req.query.id
-    db.collection("sessions").find({"id" : id}).toArray(function(err, result) {
+    var id = req.query.user_id
+    console.log(id);
+    db.collection("sessions").find({"user_id" : id}).toArray(function(err, result) {
     if (err) throw err;
     res.send(result);
     });
