@@ -73,7 +73,7 @@ while True:
             time.sleep(30)
             producer.send('model-execution', value = weather_details)
         except Exception as e:
-            print(e)
+            # print(e)
             error_details = {
                 "user_id": weather_req['user_id'],
                 "job_id": weather_req['job_id'],
@@ -86,7 +86,4 @@ while True:
             mongosend = copy.deepcopy(weather_details)
             result = db.weather.insert_one(mongosend)
             producer.send('session-update', value = error_details)
-            
-            
-        
-        
+                    
