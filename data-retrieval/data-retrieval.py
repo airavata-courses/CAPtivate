@@ -61,6 +61,7 @@ while True:
                 "job_id": weather_req['job_id'],
                 "location_id": weather_req['location_id'],
                 "date": weather_req['date'],
+                "status": weather_req['status'],
                 # Number of fields will improve
                 "tmax": tmax[0]['value'],
                 "tmin": tmin[0]['value']
@@ -79,6 +80,7 @@ while True:
                 "job_id": weather_req['job_id'],
                 "location_id": weather_req['location_id'],
                 "date": weather_req['date'],
+                "status": "Error",
                 # Number of fields will improve
                 "error": "There was an error processing your query"
             }
