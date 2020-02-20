@@ -16,11 +16,17 @@
 						"name": "Content-Type",
 						"value": "application/json",
 						"type": "text"
+					},
+					{
+						"key": "",
+						"value": "",
+						"type": "text",
+						"disabled": true
 					}
 				],
 				"body": {
 					"mode": "raw",
-					"raw": "{\n\t\"usernameOrEmail\": \"shubhangi\",\n\t\"password\" : \"Shubhangi\"\n}",
+					"raw": "{\n\t\"usernameOrEmail\": \"johnny\",\n\t\"password\" : \"johndoe\"\n}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -64,7 +70,8 @@
 					}
 				},
 				"url": {
-					"raw": "localhost:8181/api/auth/signup",
+					"raw": "http://localhost:8181/api/auth/signup",
+					"protocol": "http",
 					"host": [
 						"localhost"
 					],
