@@ -15,6 +15,12 @@ Feel free to create issues and report bugs if you find something wrong in the pr
 
 ---
 
+#### Latest Release
+Branch - **release/project1-0.0.1**
+
+**Kindly pull code from the _release/project1-0.0.1_ branch for Assignment 1.**
+
+
 #### Project Setup Instructions
 
 Download or pull the repository in to your local machine. The following steps detail the steps needed to set up and run the project. 
