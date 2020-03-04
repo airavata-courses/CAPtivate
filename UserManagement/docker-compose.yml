@@ -17,8 +17,8 @@ services:
     image: user-mgmt-image
     restart: always
     build:
-      context: ./
-      dockerfile: Dockerfile
+      context: .
+      dockerfile: ./Dockerfile
     ports:
       - 8181:8181
     environment:

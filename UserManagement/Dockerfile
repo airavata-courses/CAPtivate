@@ -1,9 +1,8 @@
-FROM java:8
+FROM openjdk:8
 FROM maven:alpine
-WORKDIR /app
-COPY . /app
-RUN mvn -v
+WORKDIR /usermgmt
+COPY . /usermgmt
 RUN mvn clean install -DskipTests
+RUN mvn package -DskipTests
 EXPOSE 8181
-ADD ./target/UserManagement-0.0.1-SNAPSHOT.jar /jar/
-ENTRYPOINT ["java","-jar","/jar/UserManagement-0.0.1-SNAPSHOT.jar"]
+ENTRYPOINT ["java","-jar","/usermgmt/target/UserManagement-0.0.1-SNAPSHOT.jar"]
