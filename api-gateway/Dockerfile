@@ -5,4 +5,6 @@ ADD . /api-gateway
 
 EXPOSE 8080
 
+RUN sbt compile
+
 CMD sbt run
