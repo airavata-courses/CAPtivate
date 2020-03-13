@@ -1,0 +1,40 @@
+version: '3'
+
+services:
+  nodejs:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: session-management
+    container_name: session-management
+    restart: always
+    environment:
+      - MONGO_HOSTNAME=mongodb-container
+    ports:
+      - "3005:3005"
+    depends_on: 
+      - mongodb-container
+    volumes:
+      - .:/home/node/app
+      - node_modules:/home/node/app/node_modules
+    networks:
+      - session-mgmt-network
+
+  mongodb-container:
+    image: mongo:4.1.8-xenial
+    container_name: mongodb-container
+    restart: always
+    volumes:
+      - dbdata:/data/db
+    ports:
+      - "27023-27025:27017-27019"
+    networks:
+      - session-mgmt-network
+
+networks:
+  session-mgmt-network:
+    driver: bridge
+
+volumes:
+  dbdata:
+  node_modules:

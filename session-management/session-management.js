@@ -5,7 +5,7 @@ const MongoClient = require('mongodb').MongoClient;
 const assert = require('assert');
 var cors = require('cors');
 
-const url = 'mongodb://localhost:27023';
+const url = 'mongodb://mongodb-container:27017';
 
 const mongo_client = new MongoClient(url);
 var db;
@@ -15,7 +15,6 @@ mongo_client.connect(function(err, client) {
     console.log("Connected correctly to server");
     db = mongo_client.db("session-management"); 
 })
-
 
 Consumer = kafka.Consumer,
 kafka_client = new kafka.KafkaClient()
