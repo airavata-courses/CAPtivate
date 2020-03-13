@@ -128,9 +128,9 @@ const jobdetails = getJobdata();
           Location : {jobdetails[0].location_id}<br></br>
         </div>*/
 
-      <div>
+        <div>
       <h1 id="title">Jobs</h1>
-      <table id="users" border = "1" >
+      <table id="users">
         <thead>
           <tr>
             <th>Date</th>
