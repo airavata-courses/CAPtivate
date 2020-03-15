@@ -4,3 +4,4 @@ target/
 !.travis.yml
 !.gitignore
 package-lock.json
+.env
