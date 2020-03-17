@@ -21,8 +21,8 @@ function Jobs(props){
     try {
       setError(null);
       setLoading(true);
-      //axios.get('http://localhost:3005/getbyid?user_id=' + userid).then(response => {
-      axios.get(`${process.env.SESSION_MANAGEMENT_SERVICE}?user_id=` + userid).then(response => {
+      axios.get('http://localhost:3005/getbyid?user_id=' + userid).then(response => {
+      //axios.get('http://session-management-service:3005/getbyid?user_id=' + userid).then(response => {
         setLoading(false);
         //setJobSession(response.data.value.date, response.data.value.location_id, response.data.value.tmax);
         console.log(response.data);

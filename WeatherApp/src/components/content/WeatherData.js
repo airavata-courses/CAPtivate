@@ -58,8 +58,8 @@ const getWeather = () => {
     try {
       setError(null);
       setLoading(true);
-      //axios.post('http://localhost:8080/data-retrieval', { date: date.value, location_id: 'ZIP:' + zipcode.value, user_id : userid, job_id: jobid, status: "In-Progress" },
-      axios.post(`${process.env.API_GATEWAY}/data-retrieval`, { date: date.value, location_id: 'ZIP:' + zipcode.value, user_id : userid, job_id: jobid, status: "In-Progress" },
+      axios.post('http://localhost:8080/data-retrieval', { date: date.value, location_id: 'ZIP:' + zipcode.value, user_id : userid, job_id: jobid, status: "In-Progress" },
+      //axios.post('http://api-gateway:8080/data-retrieval', { date: date.value, location_id: 'ZIP:' + zipcode.value, user_id : userid, job_id: jobid, status: "In-Progress" },
         {headers: {
             'Content-Type': 'application/json',
         }}).then(response => {

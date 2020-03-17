@@ -15,7 +15,7 @@ function Login(props) {
     setError(null);
     setLoading(true);
     //setUsername(username.value)
-    axios.post(`${process.env.USER_MANAGEMENT_SERVICE}/signup/`, { name: name.value, email: email.value, username: username.value, password: password.value }).then(response => {
+    axios.post('http://localhost:8181/api/auth/signup/', { name: name.value, email: email.value, username: username.value, password: password.value }).then(response => {
       setLoading(false);
       //setUserSession(response.data.token, response.data.user);
       if(response.data.sucess){return(alert("Sucessfully Registered. Please signin back!"));}
