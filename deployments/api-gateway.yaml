@@ -22,4 +22,31 @@ spec:
         env:
           - name : KAFKA_SERVER
             value : kafka-service:9092
+
+---
+
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: api-gateway-deployment
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: api-gateway
+  template:
+    metadata:
+      labels:
+        app: api-gateway
+        version: v2
+    spec:
+      containers:
+      - name: api-gateway
+        image: adiselv/captivate.api-gateway:0.0.2
+        imagePullPolicy: Always
+        ports:
+        - containerPort: 8080
+        env:
+          - name : KAFKA_SERVER
+            value : kafka-service:9092
         

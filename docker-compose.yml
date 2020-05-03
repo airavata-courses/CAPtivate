@@ -80,7 +80,8 @@ services:
       POST_PROCESSING_DB: postprocessing-db:27017
 
   session-management-service:
-    image: adiselv/captivate.session-management:0.0.1
+    #image: adiselv/captivate.session-management:0.0.1
+    image: adiselv/captivate.session-management:0.0.2
     depends_on:
       kafka:
         condition: service_healthy
@@ -93,7 +94,8 @@ services:
       SESSION_MANAGEMENT_DB: mongodb://session-management-db:27017
 
   api-gateway:
-    image: adiselv/captivate.api-gateway:0.0.1
+    #image: adiselv/captivate.api-gateway:0.0.1
+    image: adiselv/captivate.api-gateway:0.0.2
     depends_on:
       kafka:
         condition: service_healthy
@@ -114,7 +116,8 @@ services:
       - mysql-data:/var/lib/mysql
 
   user-management:
-     image: adiselv/captivate.user-management:0.0.1
+     #image: adiselv/captivate.user-management:0.0.1
+     image: adiselv/captivate.user-management:0.0.2
      ports:
        - "8181:8181"
      environment:
@@ -126,7 +129,8 @@ services:
        - mysql-container
 
   ui:
-    image: adiselv/captivate.ui:0.0.1
+    #image: adiselv/captivate.ui:0.0.1
+    image: adiselv/captivate.ui:0.0.2
     ports:
       - "3000:3000"
     environment:
