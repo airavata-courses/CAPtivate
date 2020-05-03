@@ -11,10 +11,44 @@ spec:
     metadata:
       labels:
         app: user-management
+        version: v1
     spec:
       containers:
       - name: user-management
         image: adiselv/captivate.user-management:latest
+        imagePullPolicy: Always
+        ports:
+        - containerPort: 8181
+        env:
+          - name : MYSQL_URL
+            value : user-management-db:3306
+          - name : MYSQL_USERNAME
+            value : root
+          - name : MYSQL_ROOT_PASSWORD
+            value : root.CAP2020
+          - name : USER_MANAGEMENT_DB
+            value : ads_docker
+
+---
+
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: user-management-dep
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: user-management
+  template:
+    metadata:
+      labels:
+        app: user-management
+        version: v2
+    spec:
+      containers:
+      - name: user-management
+        image: adiselv/captivate.user-management:0.0.2
         imagePullPolicy: Always
         ports:
         - containerPort: 8181

@@ -1,0 +1,87 @@
+apiVersion: networking.istio.io/v1alpha3
+kind: VirtualService
+metadata:
+  name: api-gateway
+spec:
+  hosts:
+  - api-gateway
+  gateways:
+  - captivate-gateway
+  http:
+  - route:
+    - destination:
+        host: api-gateway
+        subset: v1
+      weight: 50
+    - destination:
+        host: api-gateway
+        subset: v2
+      weight: 50
+        
+---
+
+
+apiVersion: networking.istio.io/v1alpha3
+kind: VirtualService
+metadata:
+  name: ui-service
+spec:
+  hosts:
+  - ui-service
+  gateways:
+  - captivate-gateway
+  http:
+  - route:
+    - destination:
+        host: ui-service
+        subset: v1
+      weight: 65
+    - destination:
+        host: ui-service
+        subset: v2
+      weight: 35
+        
+---
+
+
+apiVersion: networking.istio.io/v1alpha3
+kind: VirtualService
+metadata:
+  name: session-management
+spec:
+  hosts:
+  - session-management
+  gateways:
+  - captivate-gateway
+  http:
+  - route:
+    - destination:
+        host: session-management
+        subset: v1
+      weight: 65
+    - destination:
+        host: session-management
+        subset: v2
+      weight: 35
+        
+---
+
+apiVersion: networking.istio.io/v1alpha3
+kind: VirtualService
+metadata:
+  name: user-management
+spec:
+  hosts:
+  - user-management
+  gateways:
+  - captivate-gateway
+  http:
+  - route:
+    - destination:
+        host: user-management
+        subset: v1
+      weight: 65
+    - destination:
+        host: user-management
+        subset: v2
+      weight: 35
