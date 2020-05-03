@@ -25,6 +25,7 @@ spec:
     metadata:
       labels:
         app: ui-app
+        version: v1
     spec:
       containers:
       - name: ui
@@ -32,4 +33,29 @@ spec:
         imagePullPolicy: Always
         ports:
         - containerPort: 3000
+        
+---
+
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: ui-deployment-v2
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: ui-app
+  template:
+    metadata:
+      labels:
+        app: ui-app
+        version: v2
+    spec:
+      containers:
+      - name: ui
+        image: adiselv/captivate.ui:9fee17a6caeb46a70d70c8dffbc5e175dbe4b8dd
+        imagePullPolicy: Always
+        ports:
+        - containerPort: 3000
+        
         
