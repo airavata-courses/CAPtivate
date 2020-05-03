@@ -39,7 +39,7 @@ spec:
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: ui-deployment
+  name: ui-deployment-v2
 spec:
   replicas: 1
   selector:
@@ -53,7 +53,7 @@ spec:
     spec:
       containers:
       - name: ui
-        image: adiselv/captivate.ui:0.0.2
+        image: adiselv/captivate.ui:9fee17a6caeb46a70d70c8dffbc5e175dbe4b8dd
         imagePullPolicy: Always
         ports:
         - containerPort: 3000
