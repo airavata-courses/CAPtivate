@@ -15,7 +15,7 @@ spec:
     route:
     - destination:
         host: ui-service
-        subset: v1
+        subset: chrome
   - match:
     - headers:
         user-agent:
@@ -23,4 +23,4 @@ spec:
     route:
     - destination:
         host: ui-service
-        subset: v2
+        subset: safari
