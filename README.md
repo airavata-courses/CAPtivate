@@ -10,6 +10,10 @@ Interested on why the CAP is capitalised in the team name ? It's a cookie ... Ch
 
 2. [Milestone 2 (Assignment 2)](https://github.com/airavata-courses/CAPtivate/wiki/Milestone-2--:-Project-Setup-Instructions)
 
+3. [Milestone 3.1](https://github.com/airavata-courses/CAPtivate/wiki/Milestone-3.1-:-Project-Proposal)
+
+4. [Milestone 3.2](https://github.com/airavata-courses/CAPtivate/wiki/Milestone-3.2---Project-report)
+
 ---
 
 ### Contributing Guidelines 
