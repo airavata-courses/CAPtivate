@@ -11,11 +11,11 @@ spec:
     metadata:
       labels:
         app: ui-app
-        version: v1
+        version: chrome
     spec:
       containers:
       - name: ui
-        image: adiselv/captivate.ui:latest
+        image: adiselv/captivate.ui:chrome
         imagePullPolicy: Always
         ports:
         - containerPort: 3000
@@ -35,11 +35,11 @@ spec:
     metadata:
       labels:
         app: ui-app
-        version: v2
+        version: safari
     spec:
       containers:
       - name: ui
-        image: adiselv/captivate.ui:9fee17a6caeb46a70d70c8dffbc5e175dbe4b8dd
+        image: adiselv/captivate.ui:safari
         imagePullPolicy: Always
         ports:
         - containerPort: 3000
