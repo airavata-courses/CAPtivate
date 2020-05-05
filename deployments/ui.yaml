@@ -15,7 +15,9 @@ spec:
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: ui-deployment
+  name: ui-deployment-v1
+  labels:
+    version: v1
 spec:
   replicas: 1
   selector:
@@ -25,6 +27,7 @@ spec:
     metadata:
       labels:
         app: ui-app
+        version: v1
     spec:
       containers:
       - name: ui
@@ -33,3 +36,28 @@ spec:
         ports:
         - containerPort: 3000
         
+---
+
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: ui-deployment-v2
+  labels:
+    version: v2
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: ui-app
+  template:
+    metadata:
+      labels:
+        app: ui-app
+        version: v2
+    spec:
+      containers:
+      - name: ui
+        image: shubhangis91/captivate-ui-v2:v2.0
+        imagePullPolicy: Always
+        ports:
+        - containerPort: 3000
